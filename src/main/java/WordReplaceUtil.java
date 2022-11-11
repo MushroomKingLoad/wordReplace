@@ -87,6 +87,8 @@ public class WordReplaceUtil {
                         tableProp.put("rowIndex", j);
                         tableProp.put("wordParamKey", wordParamKey);
                         needDealTable.add(tableProp);
+                        j++;
+                        break;
                     }
                     this.replaceParagraphs(paragraphsList, paragraphsParams);
 
@@ -211,8 +213,8 @@ public class WordReplaceUtil {
             }
             oneParaString = oneParaString.replaceAll("\\{\\{", "");
             oneParaString = oneParaString.replaceAll("}}", "");
-            oneParaString = paragraphsParams.containsKey(oneParaString) ? oneParaString.replaceAll(oneParaString, paragraphsParams.getString(oneParaString)) : oneParaString;
-            oneParaString = prev + oneParaString + front;
+            oneParaString = paragraphsParams.containsKey(oneParaString)
+                    ? oneParaString.replaceAll(oneParaString, null == paragraphsParams.getString(oneParaString)?"":paragraphsParams.getString(oneParaString)) : oneParaString;            oneParaString = prev + oneParaString + front;
             if (oneParaString.contains("}}") || oneParaString.contains("{{")) {
                 oneParaString = getWordParamsValueDfs(oneParaString, paragraphsParams);
             }
