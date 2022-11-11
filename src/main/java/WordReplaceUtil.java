@@ -17,8 +17,8 @@ import java.util.List;
  */
 public class WordReplaceUtil {
     private XWPFDocument doc;
-    private JSONObject paragraphsParams;
-    private JSONObject paramsTables;
+    private JSONObject paragraphsParams = new JSONObject();
+    private JSONObject paramsTables = new JSONObject();
     private List<JSONObject> needDealTable = new LinkedList<>();
 
     public static WordReplaceUtil me() {
